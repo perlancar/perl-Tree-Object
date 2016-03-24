@@ -91,3 +91,5 @@ Get or set children.
 L<Role::TinyCommons::Tree::Node>
 
 L<Role::TinyCommons::Tree::NodeMethods>
+
+Some other generic tree modules on CPAN: L<Data::Tree>, L<Tree::Simple>.
