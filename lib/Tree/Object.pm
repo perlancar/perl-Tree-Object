@@ -9,7 +9,7 @@ use warnings;
 
 use Role::Tiny::With;
 
-with 'Role::Tiny::Tree::NodeMethods';
+with 'Role::TinyCommons::Tree::NodeMethods';
 
 sub new {
     my $class = shift;
