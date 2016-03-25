@@ -1,4 +1,4 @@
-package Tree::Object;
+package Tree::Object::Hash;
 
 # DATE
 # VERSION
@@ -14,30 +14,26 @@ with 'Role::TinyCommons::Tree::NodeMethods';
 sub new {
     my $class = shift;
     my %attrs = @_;
-    $attrs{parent} //= undef;
-    $attrs{children} //= [];
+    $attrs{_parent} //= undef;
+    $attrs{_children} //= [];
     bless \%attrs, $class;
 }
 
 sub parent {
     my $self = shift;
     if (@_) {
-        $self->{parent} = $_[0];
+        $self->{_parent} = $_[0];
     }
-    $self->{parent};
+    $self->{_parent};
 }
 
 sub children {
     my $self = shift;
 
     if (@_) {
-        if (@_ == 1 && ref($_[0]) eq 'ARRAY') {
-            $self->{children} = $_[0];
-        } else {
-            $self->{children} = \@_;
-        }
+        $self->{_children} = $_[0];
     }
-    return @{ $self->{children} };
+    $self->{_children};
 }
 
 1;
@@ -62,10 +58,14 @@ sub children {
 
 =head1 DESCRIPTION
 
-This is a pretty generic tree object you can use directly or as a base class.
+This is a pretty generic hash-based tree object you can use directly or as a
+base class.
 
 It gets its methods from L<Role::TinyCommons::Tree::Node> and
 L<Role::TinyCommons::Tree::NodeMethods> roles.
+
+Parent node is stored internally in the C<_parent> key. Children nodes in the
+C<_children> key (arrayref). You can store attributes in other keys.
 
 
 =head1 METHODS
@@ -81,7 +81,7 @@ Constructor.
 
 Get or set parent.
 
-=head2 $obj->children( [ $child, ... ] ) => list
+=head2 $obj->children( [ \@children ] ) => arrayref
 
 Get or set children.
 
