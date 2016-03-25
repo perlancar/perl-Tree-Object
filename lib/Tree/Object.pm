@@ -8,10 +8,15 @@ package Tree::Object;
 
 =head1 DESCRIPTION
 
-This distribution provides several implementation of tree object classes (and
-class generators) which you can use directly or as a base class.
-as a base class.
+This distribution provides several implementations of tree classes (and class
+generators) which you can use directly or as a base class. All of them consume
+the roles from L<Role::TinyCommons::Tree> distribution.
 
 Provided classes:
 
 # INSERT_MODULES_LIST -Tree::Object
+
+
+=head1 SEE ALSO
+
+Some other generic tree modules on CPAN: L<Data::Tree>, L<Tree::Simple>.

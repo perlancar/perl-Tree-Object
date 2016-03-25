@@ -21,39 +21,24 @@ sub new {
 
 sub parent {
     my $self = shift;
-    if (@_) {
-        $self->{_parent} = $_[0];
-    }
+    $self->{_parent} = $_[0] if @_;
     $self->{_parent};
 }
 
 sub children {
     my $self = shift;
 
-    if (@_) {
-        $self->{_children} = $_[0];
-    }
+    $self->{_children} = $_[0] if @_;
     $self->{_children};
 }
 
 1;
-# ABSTRACT: A tree object
+# ABSTRACT: A hash-based tree object
 
 =head1 SYNOPSIS
 
- use Tree::Object;
-
- my $tree = Tree::Object->new(foo => 1, bar => 2, ...);
-
- my $child1 = Tree::Object->new( ... );
- my $child2 = Tree::Object->new( ... );
-
- # connect children to parent
- $child1->parent($tree);
- $child2->parent($tree);
-
- # connect parent to children
- $tree->children($child1, $child2);
+ use Tree::Object::Hash;
+ my $tree = Tree::Object::Hash->new(attr1 => ..., attr2 => ...);
 
 
 =head1 DESCRIPTION
@@ -91,5 +76,3 @@ Get or set children.
 L<Role::TinyCommons::Tree::Node>
 
 L<Role::TinyCommons::Tree::NodeMethods>
-
-Some other generic tree modules on CPAN: L<Data::Tree>, L<Tree::Simple>.
