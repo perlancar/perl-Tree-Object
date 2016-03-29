@@ -13,13 +13,18 @@ sub import {
     my $caller = caller();
 
     my $code_str = "package $caller;\n";
-    $code_str .= "use Class::Build::Array::Glob;\n";
-    $code_str .= "use Role::Tiny::With;\n";
-    for (@attrs) {
-        $code_str .= "has $_ => (is=>'rw');\n";
+
+    $code_str .= "use Class::Accessor::Array {\n";
+    $code_str .= "    accessors => {\n";
+    my $idx = 0;
+    for (@attrs, "parent", "children") {
+        $code_str .= "        '$_' => $idx,\n";
+        $idx++;
     }
-    $code_str .= "has parent => (is=>'rw');\n";
-    $code_str .= "has children => (is=>'rw', glob=>1);\n";
+    $code_str .= "    },\n";
+    $code_str .= "};\n";
+
+    $code_str .= "use Role::Tiny::With;\n";
     $code_str .= "with 'Role::TinyCommons::Tree::NodeMethods';\n";
 
     #say $code_str;
@@ -44,12 +49,13 @@ In F<lib/My/ArrayTree.pm>:
 
 This module lets you create an array-backed (instead of hash-backed) tree
 object. Instead of subclassing C<Tree::Object::Hash>, you C<use> it in your
-class and listing all the attributes you will need. One caveat: Your subclasses
-won't be able to introduce more attributes. The reason is that the object will
-be an array:
+class and listing all the attributes you will need. It uses
+L<Class::Accessor::Array> to store data:
 
- [$attr1, $attr2, $attr3, $parent, @children]
+ [$attr1, $attr2, ..., $parent, \@children]
 
-After your specified attributes, the array will be used to store the parent node
-and zero or more children nodes. So there is no more space at the end to store
-other attributes.
+
+=head1 SEE ALSO
+
+L<Tree::Object::Array::Glob>, a variant which stores the children nodes directly
+as the last elements of the array to avoid creating an extra subarray.
