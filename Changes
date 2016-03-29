@@ -1,5 +1,10 @@
 Revision history for Tree-Object
 
+0.06    2016-03-30 (PERLANCAR)
+
+	- Add class: TO:Hash::ChildrenAsList.
+
+
 0.05    2016-03-29 (PERLANCAR)
 
         - [Incompatible change] Tree::Object::Array now uses
