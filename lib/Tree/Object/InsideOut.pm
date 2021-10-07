@@ -1,13 +1,15 @@
 package Tree::Object::InsideOut;
 
-# DATE
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
 
 use Class::InsideOut qw(public register id);
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 public parent   => my %parent;
 public children => my %children;

@@ -1,6 +1,10 @@
 package Tree::Object;
 
+use strict;
+
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 1;
@@ -10,7 +14,7 @@ package Tree::Object;
 
 This distribution provides several implementations of tree classes (and class
 generators) which you can use directly or as a base class. All of them consume
-the roles from L<Role::TinyCommons::Tree> distribution.
+the roles from L<RoleBundle::TinyCommons::Tree> distribution.
 
 Provided classes:
 

@@ -1,13 +1,15 @@
 package Tree::Object::Hash;
 
-# DATE
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
 
 use Role::Tiny::With;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 with 'Role::TinyCommons::Tree::NodeMethods';
 

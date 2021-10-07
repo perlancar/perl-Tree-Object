@@ -1,11 +1,13 @@
 package Tree::Object::Array::Glob;
 
-# DATE
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 sub import {
     my ($class0, @attrs) = @_;
